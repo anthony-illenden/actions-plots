@@ -76,7 +76,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install matplotlib metpy siphon cartopy
+          pip install matplotlib metpy==1.6.2 siphon==0.9 cartopy
       - name: Run doppler_radar_Z.py
         run: python doppler_radar_Z.py
       - name: Commit and push Reflectivity changes
