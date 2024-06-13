@@ -14,8 +14,16 @@ ds = xr.open_dataset(url, engine='netcdf4')
 ds = ds.metpy.parse_cf()
 ds_latlon = ds.metpy.assign_latitude_longitude()
 
-low_temp = ds_latlon['Minimum_temperature_height_above_ground_12_Hour_Minimum'].sel(time2=slice(start_date, None), height_above_ground1=2)
-
+time_dim = None
+for dim in ds_latlon['Minimum_temperature_height_above_ground_12_Hour_Minimum'].dims:
+    if dim.startswith('time'):
+        time_dim = dim
+        break
+if time_dim:
+    low_temp = ds_latlon['Minimum_temperature_height_above_ground_12_Hour_Minimum'.sel(**{time_dim: slice(start_date, None), 'height_above_ground1': 2})
+else:
+    print("No time dimension found")
+    
 for i in range(0, 8):
     datetime = formatted_date = np.datetime_as_string(low_temp.time2[i].values, unit='D')
     temp_f = (low_temp[i,:,:] - 273.15) * 9/5 + 32
