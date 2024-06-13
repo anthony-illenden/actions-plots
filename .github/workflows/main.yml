@@ -2,7 +2,7 @@ name: Generate NDFD Plan Outputs
 
 on:
   schedule:
-    - cron: '30 5,17 * * *'
+    - cron: '30 5,17 * * *' 
 
 jobs:
   generate_high_temp:
@@ -70,4 +70,74 @@ jobs:
         git add plots/low/NDFD_Low_Temp_6.png
         git add plots/low/NDFD_Low_Temp_7.png
         git commit -m "Update NDFD Low Temp Plot"
+        git push
+
+  generate_radar_reflectivity:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.18'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install matplotlib metpy siphon cartopy
+    
+    - name: Run doppler_radar_Z.py
+      run: python doppler_radar_Z.py
+    
+    - name: Commit and push Reflectivity changes
+      run: |
+        git config --local user.email "tonyillenden@gmail.com"
+        git config --local user.name "anthony-illenden"
+        git add plots/radar/Reflectivity_*.png
+        git commit -m "Update Radar Reflectivity Plots"
+        git push
+
+name: Radar Reflectivity
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  update_radar_reflectivity:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9.18'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install matplotlib metpy siphon cartopy
+    
+    - name: Run doppler_radar_Z.py
+      run: python doppler_radar_Z.py
+    
+    - name: Commit and push Reflectivity changes
+      run: |
+        git config --local user.email "tonyillenden@gmail.com"
+        git config --local user.name "anthony-illenden"
+        git add plots/radar/Reflectivity_0.png
+        git add plots/radar/Reflectivity_1.png
+        git add plots/radar/Reflectivity_2.png
+        git add plots/radar/Reflectivity_3.png
+        git add plots/radar/Reflectivity_4.png
+        git add plots/radar/Reflectivity_5.png
+        git add plots/radar/Reflectivity_6.png
+        git add plots/radar/Reflectivity_7.png
+        git add plots/radar/Reflectivity_8.png
+        git add plots/radar/Reflectivity_9.png
+        git add plots/radar/Reflectivity_10.png
+        git add plots/radar/Reflectivity_11.png
+        git commit -m "Update Radar Reflectivity Plots"
         git push
