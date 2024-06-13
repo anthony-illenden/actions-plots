@@ -2,7 +2,7 @@ name: Generate NDFD Plan Outputs
 
 on:
   schedule:
-    - cron: '*/10 * * * *'  # Runs daily at midnight UTC
+    - cron: '*/10 * * * *'
 
 jobs:
   generate_high_temp:
@@ -13,12 +13,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.9.18'
     
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install xarray metpy matplotlib cartopy numpy
+        pip install xarray==2023.6.0 metpy==1.6.2 matplotlib==3.8.0 cartopy==0.21.1 numpy==1.26.4 netCDF4==1.5.7 scipy==1.12.0
 
     - name: Run ndfd_high_plan.py
       run: python ndfd_high_plan.py
@@ -39,12 +39,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.9.18' 
     
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install xarray metpy matplotlib cartopy numpy
+        pip install xarray==2023.6.0 metpy==1.6.2 matplotlib==3.8.0 cartopy==0.21.1 numpy==1.26.4 netCDF4==1.5.7 scipy==1.12.0
 
     - name: Run ndfd_low_plan.py
       run: python ndfd_low_plan.py
