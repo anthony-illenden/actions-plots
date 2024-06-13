@@ -30,5 +30,5 @@ for i in range(0, 9):
     contour = plt.contour(ds_latlon['longitude'], ds_latlon['latitude'], temp_f, colors='black', levels=np.arange(30, 111, 5))
     plt.clabel(contour, inline=True, fontsize=12, fmt='%1.0f')
     plt.title('NDFD High Temperature for {}'.format(datetime))
-    plt.savefig('plots/high/NDFD_High_Temp_{}.png'.format(i), dpi=250)
+    plt.savefig('plots/high/NDFD_High_Temp_{}.png'.format(i), dpi=450, bbox_inches='tight')
 
