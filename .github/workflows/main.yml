@@ -2,7 +2,7 @@ name: Generate NDFD Plan Outputs
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '30 5,17 * * *'
 
 jobs:
   generate_high_temp:
