@@ -28,7 +28,7 @@ for i in range(0, 9):
     cbar.set_ticks(np.arange(30, 111, 10))
     cbar.set_ticklabels(['30', '40', '50', '60', '70', '80', '90', '100', '110'])
     contour = plt.contour(ds_latlon['longitude'], ds_latlon['latitude'], temp_f, colors='black', levels=np.arange(30, 111, 5))
-    plt.clabel(contour, inline=True, fontsize=8, fmt='%1.0f')
+    plt.clabel(contour, inline=True, fontsize=12, fmt='%1.0f')
     plt.title('NDFD High Temperature for {}'.format(datetime))
     plt.savefig('NDFD_High_Temp_{}.png'.format(i), dpi=250)
 
