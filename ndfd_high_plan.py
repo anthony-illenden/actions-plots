@@ -14,7 +14,15 @@ ds = xr.open_dataset(url, engine='netcdf4')
 ds = ds.metpy.parse_cf()
 ds_latlon = ds.metpy.assign_latitude_longitude()
 
-hi_temp = ds_latlon['Maximum_temperature_height_above_ground_12_Hour_Maximum'].sel(time1=slice(start_date, None), height_above_ground1=2)
+time_dim = None
+for dim in ds_latlon['Maximum_temperature_height_above_ground_12_Hour_Maximum'].dims:
+    if dim.startswith('time'):
+        time_dim = dim
+        break
+if time_dim:
+    hi_temp = ds_latlon['Maximum_temperature_height_above_ground_12_Hour_Maximum'].sel(**{time_dim: slice(start_date, None), 'height_above_ground1': 2})
+else:
+    print("No time dimension found")
 
 for i in range(0, 9):
     datetime = formatted_date = np.datetime_as_string(hi_temp.time1[i].values, unit='D')
