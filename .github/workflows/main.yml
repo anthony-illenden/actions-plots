@@ -61,13 +61,13 @@ jobs:
       run: |
         git config --local user.email "tonyillenden@gmail.com"
         git config --local user.name "anthony-illenden"
-        git add NDFD_Low_Temp_0.png
-        git add NDFD_Low_Temp_1.png
-        git add NDFD_Low_Temp_2.png
-        git add NDFD_Low_Temp_3.png
-        git add NDFD_Low_Temp_4.png
-        git add NDFD_Low_Temp_5.png
-        git add NDFD_Low_Temp_6.png
-        git add NDFD_Low_Temp_7.png
+        git add plots/low/NDFD_Low_Temp_0.png
+        git add plots/low/NDFD_Low_Temp_1.png
+        git add plots/low/NDFD_Low_Temp_2.png
+        git add plots/low/NDFD_Low_Temp_3.png
+        git add plots/low/NDFD_Low_Temp_4.png
+        git add plots/low/NDFD_Low_Temp_5.png
+        git add plots/low/NDFD_Low_Temp_6.png
+        git add plots/low/NDFD_Low_Temp_7.png
         git commit -m "Update NDFD Low Temp Plot"
         git push
