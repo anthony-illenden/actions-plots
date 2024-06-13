@@ -20,7 +20,6 @@ def polar_to_cartesian(az, rng):
     return x, y
 
 ds = get_radarserver_datasets('http://thredds.ucar.edu/thredds/')
-print(list(ds))
 url = ds['NEXRAD Level II Radar from IDD'].follow().catalog_url
 rs = RadarServer(url)
 
