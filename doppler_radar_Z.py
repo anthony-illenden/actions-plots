@@ -5,6 +5,7 @@ import metpy
 from siphon.cdmr import Dataset
 from siphon.radarserver import get_radarserver_datasets, RadarServer
 import cartopy.crs as ccrs
+import cartopy.feature as cfeature
 from metpy.plots import USCOUNTIES
 
 def raw_to_masked_float(var, data):
