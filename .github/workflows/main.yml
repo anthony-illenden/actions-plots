@@ -34,7 +34,7 @@ jobs:
           git add plots/high/NDFD_High_Temp_7.png
           git add plots/high/NDFD_High_Temp_8.png
           git commit -m "Update NDFD High Temp Plot"
-          git push
+          git push -f origin master
 
   generate_low_temp:
     runs-on: ubuntu-latest
@@ -63,7 +63,7 @@ jobs:
           git add plots/low/NDFD_Low_Temp_6.png
           git add plots/low/NDFD_Low_Temp_7.png
           git commit -m "Update NDFD Low Temp Plot"
-          git push
+          git push -f origin master
 
   update_radar_reflectivity:
     runs-on: ubuntu-latest
@@ -96,4 +96,4 @@ jobs:
           git add plots/radar/Reflectivity_10.png
           git add plots/radar/Reflectivity_11.png
           git commit -m "Update Radar Reflectivity Plots"
-          git push
+          git push -f origin master
