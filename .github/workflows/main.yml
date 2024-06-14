@@ -9,91 +9,80 @@ jobs:
   generate_high_temp:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9.18'
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install xarray==2023.6.0 metpy==1.6.2 matplotlib==3.8.0 cartopy numpy==1.26.4 netCDF4==1.5.7 scipy==1.12.0
+      
       - name: Run ndfd_high_plan.py
-        run: python ndfd_high_plan.py
+        run: python scripts/ndfd_high_plan.py
+      
       - name: Commit and push High Temp changes
         run: |
           git config --local user.email "tonyillenden@gmail.com"
           git config --local user.name "anthony-illenden"
-          git add plots/high/NDFD_High_Temp_0.png
-          git add plots/high/NDFD_High_Temp_1.png
-          git add plots/high/NDFD_High_Temp_2.png
-          git add plots/high/NDFD_High_Temp_3.png
-          git add plots/high/NDFD_High_Temp_4.png
-          git add plots/high/NDFD_High_Temp_5.png
-          git add plots/high/NDFD_High_Temp_6.png
-          git add plots/high/NDFD_High_Temp_7.png
-          git add plots/high/NDFD_High_Temp_8.png
+          git add plots/high/NDFD_High_Temp_*.png
           git commit -m "Update NDFD High Temp Plot"
-          git push -f origin master
+          git push origin main
 
   generate_low_temp:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9.18'
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install xarray==2023.6.0 metpy==1.6.2 matplotlib==3.8.0 cartopy numpy==1.26.4 netCDF4==1.5.7 scipy==1.12.0
+      
       - name: Run ndfd_low_plan.py
-        run: python ndfd_low_plan.py
+        run: python scripts/ndfd_low_plan.py
+      
       - name: Commit and push Low Temp changes
         run: |
           git config --local user.email "tonyillenden@gmail.com"
           git config --local user.name "anthony-illenden"
-          git add plots/low/NDFD_Low_Temp_0.png
-          git add plots/low/NDFD_Low_Temp_1.png
-          git add plots/low/NDFD_Low_Temp_2.png
-          git add plots/low/NDFD_Low_Temp_3.png
-          git add plots/low/NDFD_Low_Temp_4.png
-          git add plots/low/NDFD_Low_Temp_5.png
-          git add plots/low/NDFD_Low_Temp_6.png
-          git add plots/low/NDFD_Low_Temp_7.png
+          git add plots/low/NDFD_Low_Temp_*.png
           git commit -m "Update NDFD Low Temp Plot"
-          git push -f origin master
+          git push origin main
 
   update_radar_reflectivity:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.9.18'
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install matplotlib metpy==1.6.2 siphon==0.9 cartopy protobuf==3.20.3
+      
       - name: Run doppler_radar_Z.py
-        run: python doppler_radar_Z.py
+        run: python scripts/doppler_radar_Z.py
+      
       - name: Commit and push Reflectivity changes
         run: |
           git config --local user.email "tonyillenden@gmail.com"
           git config --local user.name "anthony-illenden"
-          git add plots/radar/Reflectivity_0.png
-          git add plots/radar/Reflectivity_1.png
-          git add plots/radar/Reflectivity_2.png
-          git add plots/radar/Reflectivity_3.png
-          git add plots/radar/Reflectivity_4.png
-          git add plots/radar/Reflectivity_5.png
-          git add plots/radar/Reflectivity_6.png
-          git add plots/radar/Reflectivity_7.png
-          git add plots/radar/Reflectivity_8.png
-          git add plots/radar/Reflectivity_9.png
-          git add plots/radar/Reflectivity_10.png
-          git add plots/radar/Reflectivity_11.png
+          git add plots/radar/Reflectivity_*.png
           git commit -m "Update Radar Reflectivity Plots"
-          git push -f origin master
+          git push origin main
