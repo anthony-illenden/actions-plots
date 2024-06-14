@@ -44,7 +44,7 @@ if time_dim:
         cbar = plt.colorbar(label='Temperature (F)', fraction=0.046, pad=0.04)
         cbar.set_ticks(np.arange(30, 111, 10))
         cbar.set_ticklabels(['30', '40', '50', '60', '70', '80', '90', '100', '110'])
-        contour = plt.contour(ds_latlon['longitude'], ds_latlon['latitude'], temp_f_smoothed, colors='black', levels=np.arange(30, 111, 5), linewidths=0.5)
+        contour = plt.contour(ds_latlon['longitude'], ds_latlon['latitude'], temp_f_smoothed, colors='black', levels=np.arange(30, 111, 1), linewidths=0.5)
         plt.clabel(contour, inline=True, fontsize=8, fmt='%1.0f')
         plt.title('NDFD High Temperature for {}'.format(datetime_str))
         plt.savefig('plots/high/NDFD_High_Temp_{}.png'.format(i), dpi=450, bbox_inches='tight')
