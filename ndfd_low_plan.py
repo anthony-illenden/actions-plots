@@ -24,7 +24,7 @@ for dim in possible_time_dims:
         time_dim = dim
         break
 if time_dim is None:
-    print("No valid time dimension found in hi_temp.")
+    print("No valid time dimension found in low_temp.")
 
 start_date_formatted = np.datetime64(start_date)
 
