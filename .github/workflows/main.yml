@@ -3,7 +3,7 @@ name: Generate NDFD Plan Outputs and Radar Reflectivity
 on:
   schedule:
     - cron: '*/15 * * * *' # For NDFD Plan Outputs
-    - cron: '*/5 * * * *' # For Radar Reflectivity
+    - cron: '0 8,20 * * *' # For Radar Reflectivity
 
 jobs:
   generate_high_temp:
