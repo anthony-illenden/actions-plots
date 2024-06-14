@@ -33,7 +33,7 @@ low_temp = low_temp.sel(**{time_dim: slice(start_date_formatted, None)})
 if time_dim:
     for i in range(min(9, len(low_temp[time_dim]))):  
         datetime_str = np.datetime_as_string(low_temp[time_dim].values[i], unit='D')
-        temp_f = (hi_temp[i,:,:] - 273.15) * 9/5 + 32
+        temp_f = (low_temp[i,:,:] - 273.15) * 9/5 + 32
         fig, ax = plt.subplots(figsize=(12, 10), subplot_kw={'projection': ccrs.PlateCarree()})
         ax.set_extent([-86, -82, 41, 45])
         ax.add_feature(cfeature.STATES, linewidth=0.5)
