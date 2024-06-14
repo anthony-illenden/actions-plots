@@ -44,7 +44,7 @@ if time_dim:
         cbar.set_ticklabels(['30', '40', '50', '60', '70', '80', '90', '100', '110'])
         contour = plt.contour(ds_latlon['longitude'], ds_latlon['latitude'], temp_f, colors='black', levels=np.arange(30, 111, 5))
         plt.clabel(contour, inline=True, fontsize=8, fmt='%1.0f')
-        plt.title('NDFD Low Temperature for {}'.format(datetime))
+        plt.title('NDFD Low Temperature for {}'.format(datetime_str))
         plt.savefig('plots/low/NDFD_Low_Temp_{}.png'.format(i), dpi=450, bbox_inches='tight')
 
 
