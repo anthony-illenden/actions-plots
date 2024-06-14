@@ -7,7 +7,7 @@ import cartopy.feature as cfeature
 import numpy as np
 from metpy.plots import USCOUNTIES
 
-start_date = datetime.datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+start_date = datetime.datetime.now()
 
 url = "https://thredds.ucar.edu/thredds/dodsC/grib/NCEP/NDFD/NWS/CONUS/NOAAPORT/Best"
 ds = xr.open_dataset(url, engine='netcdf4')
