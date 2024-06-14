@@ -31,7 +31,7 @@ start_date_formatted = np.datetime64(start_date)
 hi_temp = hi_temp.sel(**{time_dim: slice(start_date_formatted, None)})
 
 if time_dim:
-    for i in range(min(9, len(hi_temp[time_dim]))):  # Limit to the length of available data
+    for i in range(min(9, len(hi_temp[time_dim]))):
         datetime_str = np.datetime_as_string(hi_temp[time_dim].values[i], unit='D')
         temp_f = (hi_temp[i,:,:] - 273.15) * 9/5 + 32
         fig, ax = plt.subplots(figsize=(12, 10), subplot_kw={'projection': ccrs.PlateCarree()})
