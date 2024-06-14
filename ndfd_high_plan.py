@@ -34,7 +34,7 @@ if time_dim:
     for i in range(min(9, len(hi_temp[time_dim]))):  # Limit to the length of available data
         datetime_str = np.datetime_as_string(hi_temp[time_dim].values[i], unit='D')
         temp_f = (hi_temp[i,:,:] - 273.15) * 9/5 + 32
-        fig, ax = plt.subplots(figsize=(10, 10), subplot_kw={'projection': ccrs.PlateCarree()})
+        fig, ax = plt.subplots(figsize=(12, 10), subplot_kw={'projection': ccrs.PlateCarree()})
         ax.set_extent([-86, -82, 41, 45])
         ax.add_feature(cfeature.STATES, linewidth=0.5)
         ax.add_feature(USCOUNTIES.with_scale('5m'), linewidth=0.25)
