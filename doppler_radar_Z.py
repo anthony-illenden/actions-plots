@@ -19,6 +19,19 @@ def polar_to_cartesian(az, rng):
     y = rng * np.cos(az_rad)
     return x, y
 
+def new_map(fig, lon, lat):
+    proj = ccrs.LambertConformal(central_longitude=lon, central_latitude=lat)
+    ax = fig.add_axes([0.02, 0.02, 0.96, 0.96], projection=proj)
+    ax.add_feature(cfeature.COASTLINE.with_scale('50m'), linewidth=2)
+    ax.add_feature(cfeature.STATES.with_scale('50m'))
+    ax.add_feature(USCOUNTIES.with_scale('5m'), linewidth=0.25)
+    
+    return ax
+
+def proj(lon, lat):
+    proj = ccrs.LambertConformal(central_longitude=lon, central_latitude=lat)
+    return proj
+
 ds = get_radarserver_datasets('http://thredds.ucar.edu/thredds/')
 url = ds['NEXRAD Level II Radar from IDD'].follow().catalog_url
 rs = RadarServer(url)
